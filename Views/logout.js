@@ -3,30 +3,30 @@ const router = express.Router();
 const { getDb } = require('../db');
 const { ObjectId } = require('mongodb');
 
+// Logout route
 router.get('/', async (req, res) => {
-    if (req.session && req.session.userId) {
+    if (req.session.user) {
         const db = getDb();
-        const userId = req.session.userId;
+        const userId = req.session.user.id;
+        const sessionCode = req.session.user.sessionCode;
 
-        console.log(`Attempting to log out user: ${userId}`);
+        console.log(`Attempting to log out user: ${userId} with sessionCode: ${sessionCode}`);
 
         try {
-            // Convert userId to ObjectId
-            const objectIdUserId = new ObjectId(userId);
+            const objectIdUserId = new ObjectId(userId); // Ensure valid ObjectId
 
-            // Record logout time
             const result = await db.collection('logs').updateOne(
-                { userId: objectIdUserId, sessionCode: req.session.sessionCode }, 
+                { userId: objectIdUserId, sessionCode: sessionCode },
                 { $set: { logoutTime: new Date() } }
             );
 
             if (result.modifiedCount === 0) {
-                console.error(`No log entry found for userId: ${userId}`);
+                console.error(`No log entry found for userId: ${userId}, sessionCode: ${sessionCode}.`);
             } else {
                 console.log(`Successfully logged out user: ${userId}`);
             }
 
-            // Destroy session and redirect to login
+            // Destroy the session
             req.session.destroy((err) => {
                 if (err) {
                     console.error('Error destroying session:', err);
