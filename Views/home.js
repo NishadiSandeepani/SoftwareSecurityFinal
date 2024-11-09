@@ -69,8 +69,8 @@ router.get('/', (req, res) => {
             </style>
         </head>
         <body>
-            <header>
-                <h1>Panda Conservation Awareness</h1>
+            <header>Panda Conservation Awareness
+                <h1></h1>
                 <p>Help us protect these magnificent creatures!</p>
                 <div class="buttons">
                     <a href="/register" class="button">Sign up</a>
