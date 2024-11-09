@@ -26,62 +26,72 @@ router.get('/', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>User Registration - My Node.js App</title>
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #F8F0F6;
-                color: #333;
-            }
-
-            header {
-                background-color: #F8A1D1;
-                padding: 20px;
-                text-align: center;
-                color: white;
-            }
-
-            h1 {
-                font-size: 2.5em;
+            /* General reset */
+            * {
                 margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
 
-            a {
-                text-decoration: none;
+            /* Body styling */
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #ffe6f2; /* Light pink background */
+                color: #333;
+                padding: 20px;
+            }
+
+            /* Header styling */
+            header {
+                text-align: center;
+                background-color: #ff66b2; /* Bright pink header */
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            header h1 {
                 color: white;
-                font-size: 1.1em;
+                font-size: 2.5em;
             }
 
-            a:hover {
-                text-decoration: underline;
+            header a {
+                color: white;
+                font-size: 1.2em;
+                text-decoration: none;
             }
 
+            /* Registration container */
             .register-container {
                 display: flex;
                 justify-content: center;
-                padding: 50px 0;
+                align-items: center;
+                height: 70vh;
             }
 
             .register-card {
-                background-color: #ffffff;
-                padding: 20px;
+                background-color: white;
+                padding: 30px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 border-radius: 10px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 width: 100%;
                 max-width: 400px;
                 text-align: center;
             }
 
-            h2 {
-                color: #F8A1D1;
+            .register-card h2 {
+                color: #ff66b2; /* Bright pink for headings */
+                font-size: 1.8em;
+                margin-bottom: 20px;
             }
 
             .form-group {
-                margin-bottom: 20px;
+                margin-bottom: 15px;
                 text-align: left;
             }
 
             label {
-                font-weight: bold;
-                color: #F8A1D1;
+                font-size: 1em;
+                color: #555;
             }
 
             input[type="text"],
@@ -90,59 +100,52 @@ router.get('/', (req, res) => {
                 width: 100%;
                 padding: 10px;
                 margin-top: 5px;
-                border: 1px solid #ddd;
                 border-radius: 5px;
-            }
-
-            input[type="checkbox"] {
-                margin-right: 10px;
+                border: 1px solid #ff66b2; /* Light pink border */
+                font-size: 1em;
+                background-color: #ffe6f2; /* Light pink background */
             }
 
             button {
-                background-color: #F8A1D1;
+                width: 100%;
+                padding: 12px;
+                background-color: #ff66b2; /* Bright pink button */
                 color: white;
-                padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
+                font-size: 1.2em;
                 cursor: pointer;
-                font-size: 1.1em;
+                margin-top: 15px;
             }
 
             button:hover {
-                background-color: #f67fba;
-            }
-
-            footer {
-                background-color: #F8A1D1;
-                color: white;
-                text-align: center;
-                padding: 10px;
-                position: fixed;
-                width: 100%;
-                bottom: 0;
-            }
-
-            footer p {
-                margin: 0;
-            }
-
-            .register-form {
-                text-align: left;
+                background-color: #ff3385; /* Darker pink on hover */
             }
 
             p {
-                font-size: 0.9em;
+                margin-top: 15px;
             }
 
-            a {
-                color: #F8A1D1;
+            p a {
+                color: #ff66b2;
+                text-decoration: none;
+            }
+
+            footer {
+                text-align: center;
+                margin-top: 20px;
+                color: #ff66b2;
+            }
+
+            footer p {
+                font-size: 1em;
             }
         </style>
     </head>
     <body>
         <header>
             <h1>User Registration</h1>
-            <a href="/" style="color: #F8A1D1; margin: 0 15px; text-decoration: none; font-size: 1.1em;">Home</a>
+            <a href="/" style="color: #FFB6C1; margin: 0 15px; text-decoration: none; font-size: 1.1em;">Home</a>
         </header>
         <main>
             <section class="register-container">
@@ -161,31 +164,15 @@ router.get('/', (req, res) => {
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" placeholder="Enter your password" required>
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" id="show-password" onclick="togglePassword()"> 
-                            <label for="show-password">Show Password</label>
-                        </div>
                         <button type="submit">Register</button>
                     </form>
-                    <p>Already have an account? <a href="/login" style="color: #F8A1D1;">Login here</a></p>
+                    <p>Already have an account? <a href="/login">Login here</a></p>
                 </div>
             </section>
         </main>
         <footer>
             <p>&copy; 2024 My Node.js App</p>
         </footer>
-
-        <script>
-            function togglePassword() {
-                var passwordField = document.getElementById("password");
-                var checkBox = document.getElementById("show-password");
-                if (checkBox.checked) {
-                    passwordField.type = "text"; // Show the password
-                } else {
-                    passwordField.type = "password"; // Hide the password
-                }
-            }
-        </script>
     </body>
     </html>
     `;
@@ -277,9 +264,10 @@ router.post('/', async (req, res) => {
             </html>
         `;
         res.send(htmlContent);
-    } catch (error) {
-        console.error('Error during registration:', error);
-        res.send('An error occurred during registration. Please try again later.');
+
+    } catch (err) {
+        console.error('Error saving the user:', err);
+        res.send('An error occurred while registering. Please try again later.');
     }
 });
 
