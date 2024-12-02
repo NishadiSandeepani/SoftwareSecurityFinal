@@ -16,12 +16,18 @@ const verifyRouter = require('./Views/verify');
 const dashboardRouter = require('./Views/dashboard');
 const logoutRouter = require('./Views/logout');
 const verifyemailRouter = require('./Views/verifyemail');
+
 const myprofileRouter = require('./Views/myprofile');
 const logsRouter = require('./Views/logs');//confirm
 const confirmRouter = require('./Views/confirm');
 const adminDashboardRouter = require('./Views/adminDashboard');//adminDashboard addArticle
 const addArticleRouter = require('./Views/addArticle');//article
 const articleRouter = require('./Views/article');
+
+const myprofileRouter = require('./Views/myprofile');//logs
+const logsRouter = require('./Views/logs');//logs
+
+
 
 // Create the express app
 const app = express();
@@ -59,10 +65,14 @@ app.use('/logout', logoutRouter);
 app.use('/verifyemail', verifyemailRouter);
 app.use('/myprofile', myprofileRouter);
 app.use('/logs', logsRouter);
+
 app.use('/confirm', confirmRouter);
 app.use('/adminDashboard', adminDashboardRouter);//addArticle
 app.use('/addArticle', addArticleRouter);//article
 app.use('/article', articleRouter);
+
+
+
 
 // Simple homepage route
 app.get('/', (req, res) => {
