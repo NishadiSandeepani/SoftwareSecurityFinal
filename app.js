@@ -16,6 +16,7 @@ const dashboardRouter = require('./Views/dashboard');
 const logoutRouter = require('./Views/logout'); //verifyemail
 const verifyemailRouter = require('./Views/verifyemail');
 const myprofileRouter = require('./Views/myprofile');//logs
+const logsRouter = require('./Views/logs');//logs
 
 
 // Create the express app
@@ -46,6 +47,7 @@ app.use('/dashboard', dashboardRouter);
 app.use('/logout', logoutRouter);
 app.use('/verifyemail', verifyemailRouter);
 app.use('/myprofile', myprofileRouter);
+app.use('/logs', logsRouter);
 
 
 // Simple homepage route
