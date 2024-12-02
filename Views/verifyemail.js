@@ -1,39 +1,51 @@
 const express = require('express');
 const router = express.Router();
-const { getDb } = require('../db'); // Adjust path as needed
+const { getDb } = require('../db'); // Adjust as per your database setup
+const nodemailer = require('nodemailer'); // For sending email
 
+// Resend verification email route
 router.get('/', async (req, res) => {
-    const { token } = req.query; // Get token from the query string
-    const db = getDb(); // Get the database instance
+    const { email } = req.query; // You may need to pass the email in the query parameter or session
+
+    if (!email) {
+        return res.status(400).send('Email is required.');
+    }
+
+    const db = getDb();
 
     try {
-        // Find the user by the verification token
-        const user = await db.collection('users').findOne({ verificationToken: token });
+        // Normalize email for case insensitivity (optional, but recommended)
+        const user = await db.collection('users').findOne({ email: email.toLowerCase() });
 
         if (!user) {
-            return res.status(400).send(`
-                <h1>Invalid Token</h1>
-                <p>It seems the token is invalid or the user does not exist. Please check your link or contact support.</p>
-            `);
+            return res.status(400).send('User not found.');
         }
 
-        // Update the user's email as verified
-        await db.collection('users').updateOne(
-            { _id: user._id },
-            { $set: { emailVerified: true }, $unset: { verificationToken: "" } } // Optionally remove the token after verification
-        );
+        // Assuming you have a verification link logic
+        const verificationLink = `http://example.com/verifyemail?token=${user.verificationToken}`;
 
-        // Send a success response or redirect to login page
-        res.send(`
-            <h1>Email Verified Successfully!</h1>
-            <p>Your email has been verified. You can now <a href="/login">login here</a>.</p>
-        `);
+        // Send email (Using nodemailer or your preferred service)
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'amithaprabathi2001@gmail.com',
+                pass: 'vrfh bxni ltlb vblj',
+            }
+        });
+
+        const mailOptions = {
+            from: 'amithaprabathi2001@gmail.com',
+            to: user.email,
+            subject: 'Email Verification',
+            text: `Click on the following link to verify your email: ${verificationLink}`,
+        };
+
+        await transporter.sendMail(mailOptions);
+        res.send('Verification email sent.');
+
     } catch (err) {
-        console.error('Error verifying email:', err);
-        res.status(500).send(`
-            <h1>Error Verifying Email</h1>
-            <p>We encountered an error while verifying your email. Please try again or contact support.</p>
-        `);
+        console.error('Error:', err);
+        res.status(500).send('Error sending email or finding user.');
     }
 });
 
