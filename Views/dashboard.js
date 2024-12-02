@@ -119,9 +119,10 @@ router.get('/', async (req, res) => {
         
         <nav>
             <button onclick="window.location.href='/myprofile'">My Profile</button>
-            <button onclick="window.location.href='/logs'">Activity Log</button>
             <button onclick="window.location.href='/logout'">Logout</button>
             <button onclick="window.location.href='/'">Home</button>
+            <button onclick="window.location.href='/article'">Articles</button>
+           
         </nav>
         
         <main>

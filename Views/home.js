@@ -1,5 +1,3 @@
-// home.js
-
 const express = require('express');
 const router = express.Router();
 
@@ -14,7 +12,7 @@ router.get('/', (req, res) => {
             <style>
                 body {
                     font-family: Arial, sans-serif;
-                    background-color: #ffe4e1;
+                    background-color: #E0BFB8; /* Light Beige */
                     margin: 0;
                     padding: 0;
                     background-image: url('https://c8.alamy.com/comp/JCKY3K/vector-illustration-animal-seamless-pattern-background-with-cute-panda-JCKY3K.jpg');
@@ -22,7 +20,7 @@ router.get('/', (req, res) => {
                     background-position: center;
                 }
                 header {
-                    background-color: rgba(255, 105, 180, 0.8);
+                    background-color: rgba(169, 92, 104, 0.8); /* Dusty Rose */
                     color: white;
                     padding: 20px;
                     text-align: center;
@@ -31,7 +29,7 @@ router.get('/', (req, res) => {
                     margin-top: 10px;
                 }
                 header .button {
-                    background-color: #ff1493;
+                    background-color: #A95C68; /* Dusty Rose */
                     color: white;
                     padding: 10px 20px;
                     text-align: center;
@@ -40,20 +38,23 @@ router.get('/', (req, res) => {
                     border-radius: 5px;
                     margin: 10px 10px 0 10px;
                 }
+                .button:hover {
+                    background-color: #8A4857; /* Darker Dusty Rose on hover */
+                }
                 .container {
                     width: 80%;
                     margin: auto;
                     padding: 20px;
-                    background-color: rgba(255, 255, 255, 0.8);
+                    background-color: rgba(255, 255, 255, 0.8); /* White with some transparency */
                     border-radius: 10px;
                 }
                 h2 {
-                    color: #d5006d;
+                    color: #A95C68; /* Dusty Rose */
                 }
                 footer {
                     text-align: center;
                     padding: 20px;
-                    background-color: rgba(255, 105, 180, 0.8);
+                    background-color: rgba(169, 92, 104, 0.8); /* Dusty Rose */
                     color: white;
                 }
                 .image-gallery {

@@ -36,7 +36,11 @@ router.get('/', (req, res) => {
             /* Body styling */
             body {
                 font-family: 'Arial', sans-serif;
+
+                background-color: #E0BFB8; /* Light Beige */
+
                 background-color: #ffe6f2; /* Light pink background */
+
                 color: #333;
                 padding: 20px;
             }
@@ -44,7 +48,11 @@ router.get('/', (req, res) => {
             /* Header styling */
             header {
                 text-align: center;
+
+                background-color: #A95C68; /* Dusty Rose */
+
                 background-color: #ff66b2; /* Bright pink header */
+
                 padding: 15px;
                 margin-bottom: 20px;
             }
@@ -79,7 +87,11 @@ router.get('/', (req, res) => {
             }
 
             .register-card h2 {
+
+                color: #A95C68; /* Dusty Rose for headings */
+
                 color: #ff66b2; /* Bright pink for headings */
+
                 font-size: 1.8em;
                 margin-bottom: 20px;
             }
@@ -101,15 +113,25 @@ router.get('/', (req, res) => {
                 padding: 10px;
                 margin-top: 5px;
                 border-radius: 5px;
+
+                border: 1px solid #A95C68; /* Dusty Rose border */
+                font-size: 1em;
+                background-color: #E0BFB8; /* Light Beige background */
+
                 border: 1px solid #ff66b2; /* Light pink border */
                 font-size: 1em;
                 background-color: #ffe6f2; /* Light pink background */
+
             }
 
             button {
                 width: 100%;
                 padding: 12px;
+
+                background-color: #A95C68; /* Dusty Rose button */
+
                 background-color: #ff66b2; /* Bright pink button */
+
                 color: white;
                 border: none;
                 border-radius: 5px;
@@ -119,7 +141,11 @@ router.get('/', (req, res) => {
             }
 
             button:hover {
+
+                background-color: #8A4857; /* Darker Dusty Rose on hover */
+
                 background-color: #ff3385; /* Darker pink on hover */
+
             }
 
             p {
@@ -127,14 +153,22 @@ router.get('/', (req, res) => {
             }
 
             p a {
+
+                color: #A95C68;
+
                 color: #ff66b2;
+
                 text-decoration: none;
             }
 
             footer {
                 text-align: center;
                 margin-top: 20px;
+
+                color: #A95C68;
+
                 color: #ff66b2;
+
             }
 
             footer p {
