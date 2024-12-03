@@ -24,8 +24,6 @@ const adminDashboardRouter = require('./Views/adminDashboard');//adminDashboard 
 const addArticleRouter = require('./Views/addArticle');//article
 const articleRouter = require('./Views/article');
 
-const myprofileRouter = require('./Views/myprofile');//logs
-const logsRouter = require('./Views/logs');//logs
 
 
 
